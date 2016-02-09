@@ -8,7 +8,7 @@
 \usepackage{phonrule}
 \usepackage{gb4e}
 
-\title{The \texttt{phonrule} package (v1.1.0)}
+\title{The \texttt{phonrule} package (v1.2.0)}
 \author{Stefano Coretta \\ \texttt{stefano.coretta \textit{at} me.com}}
 
 \reversemarginpar
@@ -133,14 +133,14 @@ You can use \verb|\env|, \verb|\envl|, \verb|\envr|, \verb|\envb| for rules with
 \ex
 \begin{verbatim}
 \phon{x}{\oneof{
-	\envr{w}{\mbox{z}} \\
+	\envr{w}{z} \\
 	\envl{v}{\phonfeat{
 		+feature x \\
 		−feature y
 	}}}}
 \end{verbatim}
 \ex \phon{x}{\oneof{
-	\envr{w}{\mbox{z}} \\
+	\envr{w}{z} \\
 	\envl{v}{\phonfeat{
 		+feature x \\
 		−feature y
@@ -148,6 +148,12 @@ You can use \verb|\env|, \verb|\envl|, \verb|\envr|, \verb|\envb| for rules with
 \end{exe}
 
 \section{Changelog}
+\subsection{v1.2.0}
+\begin{itemize}
+\item Added: \texttt{ragged2e} package for \verb+\Centering+ command
+\item Fixed: now the content of the feature matrices is centred and not left aligned
+\end{itemize}
+
 \subsection{v1.1.0}
 \begin{itemize}
 \item Changed: definition of \verb+\phonfeat+ and \verb+\oneof+ with \verb+\pbox+ (requires package \texttt{pbox})

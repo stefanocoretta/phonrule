@@ -4,9 +4,10 @@
 % LPPL LaTeX Public Project License
 %  
 \ProvidesPackage{phonrule}
-  [2015/07/04 v1.1.0 LaTeX package for typesetting phonological rules]
+  [2015/07/04 v1.2.0 LaTeX package for typesetting phonological rules]
   
 \RequirePackage{pbox}
+\RequirePackage{ragged2e}
 
 \let\myDate\date
 \newcommand{\phon} [2] {#1 \ensuremath{\rightarrow} #2}
@@ -19,8 +20,8 @@
 \newcommand{\envr} [2] {#1 \ensuremath{/} \rule[-1.5pt]{1.5ex}{.5pt}#2}
 \newcommand{\envl} [2] {#1 \ensuremath{/} #2\rule[-1.5pt]{1.5ex}{.5pt}}
 \newcommand{\envb} [3] {#1 \ensuremath{/} #2\rule[-1.5pt]{1.5ex}{.5pt}#3}
-\newcommand{\phonfeat}[1]{\ensuremath{\left[\begin{array}{c} \pbox{\textwidth}{#1} \end{array}\right]}} % set environment for feature matrix with square brackets
-\newcommand{\oneof}[1]{\ensuremath{\left\{\begin{array}{l} \pbox{\textwidth}{#1} \end{array}\right.}} % set environment for one of multiple with curly brackets
+\newcommand{\phonfeat}[1]{\ensuremath{\left[\begin{array}{c} \pbox{\textwidth}{\Centering #1} \end{array}\right]}} % set environment for feature matrix with square brackets
+\newcommand{\oneof}[1]{\ensuremath{\left\{\begin{array}{l} \pbox{\textwidth}{\Centering #1} \end{array}\right.}} % set environment for one of multiple with curly brackets
 
 \endinput
 %%
