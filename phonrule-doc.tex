@@ -1,0 +1,123 @@
+\documentclass[a4paper]{article}
+
+\usepackage{fontspec}
+
+\usepackage{polyglossia}
+	\setmainlanguage{english}
+
+\usepackage{phonrule}
+\usepackage{gb4e}
+
+\usepackage{natbib}
+	\setcitestyle{aysep={},notesep={:}}
+
+\title{The \texttt{phonrule} package}
+\author{Stefano Coretta \\ \texttt{stefano.coretta@me.com}}
+
+\reversemarginpar
+
+\begin{document}
+\maketitle
+
+\section{Purpose}
+This packages provides macros for typesetting phonological rules like those in Sound Pattern of English \citep{chomsky1968sound}.
+
+\section{Usage}
+\begin{quote}
+\begin{verbatim}
+\phon{〈input〉}{〈output〉}
+\end{verbatim}
+\end{quote}
+
+The command \verb+\phon+ has two arguments: the first one is the input of the rule and the second is the output. Here is an example with code and result:
+
+\begin{exe}
+\ex \verb+\phon{z}{r}+
+\ex \phon{z}{r}
+\end{exe}
+
+\section{Usage}
+\begin{quote}
+\begin{verbatim}
+\phonc{〈input〉}{〈output〉}{〈context〉}
+\end{verbatim}
+\end{quote}
+
+\verb+\phonc+ adds a third argument for the context:
+
+\begin{exe}
+\ex \verb+\phonc{a}{ə}{[–stressed]}+
+\ex \phonc{a}{ə}{[–stressed]}
+\end{exe}
+
+The commands \verb+\phonl+, \verb+\phonr+ and \verb+\phonb+ add a place holder line and put the context, respectively, on the left (l), on the right (r) and on both sides (b):
+
+\begin{exe}
+\ex
+	\begin{xlist}
+	\ex \verb+\phonl{k}{t}{t}+
+	\ex \phonl{z}{r}{}
+	\end{xlist}
+\ex
+	\begin{xlist}
+	\ex \verb+\phonr{t}{ts}{u}+
+	\ex \phonr{t}{ts}{u}
+	\end{xlist}
+\ex
+	\begin{xlist}
+	\ex \verb+\phonb{s}{z}{V}{V}+
+	\ex \phonb{s}{z}{V}{V}
+	\end{xlist}
+\end{exe}
+
+The \verb+\oneof+ environment provides the possibility to compile several context, one per line, enclosed in curly brackets. You need to use a \verb+\mbox+.
+
+\begin{exe}
+\ex
+\begin{verbatim}
+\phonc{t}{ts}{
+\begin{oneof}
+\placehold \mbox{i} \\
+\placehold \mbox{u}
+\end{oneof}
+}
+\end{verbatim}
+\ex \phonc{t}{ts}{
+\begin{oneof}
+\placehold \mbox{i} \\
+\placehold \mbox{u}
+\end{oneof}
+}
+\end{exe}
+
+\verb+\placehold+ typeset a place holder line with spaces before and after. The \verb+\phonfeat+ environment allows you to insert feature specifications:
+
+\begin{exe}
+\ex
+\begin{verbatim}
+\phonc{t}{ts}{\phold 
+\begin{phonfeat}
+\mbox{–consonantal} \\
+\mbox{+high} \\
+\mbox{+front}
+\end{phonfeat}
+}
+\end{verbatim}
+\ex \phonc{t}{ts}{\phold 
+\begin{phonfeat}
+\mbox{– consonantal} \\
+\mbox{+high} \\
+\mbox{+front}
+\end{phonfeat}
+}
+\end{exe}
+
+\verb+\phold+ typeset a place holder line without spaces. The environments \verb+\oneofnest+ and \verb+\phonfeatnest+ allows one-of environments (inside curly brackets) and feature specifications (inside square brackets) to be nested inside a \verb+\oneof+ environment.
+
+
+
+
+\bibliography{linguistics}
+\bibliographystyle{unified}
+
+\end{document}
