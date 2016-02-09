@@ -1,7 +1,7 @@
-PhonRule.sty
+PhonRule.sty v1.1.0
 
-(c) Stefano Coretta
+(c) 2015 Stefano Coretta
 
 LPPL LaTeX Public Project License
 
-This packages provides macros for typesetting phonological rules like those in Sound Pattern of English (Chomsky and Halle 1968). It is indicated for linear phonological works.
+This packages provides macros for typesetting phonological rules like those in Sound Pattern of English (Chomsky and Halle 1968). It is recommended for linear phonological works.

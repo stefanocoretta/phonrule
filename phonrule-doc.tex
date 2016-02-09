@@ -8,11 +8,8 @@
 \usepackage{phonrule}
 \usepackage{gb4e}
 
-\usepackage{natbib}
-	\setcitestyle{aysep={},notesep={:}}
-
-\title{The \texttt{phonrule} package}
-\author{Stefano Coretta \\ \texttt{stefano.coretta@me.com}}
+\title{The \texttt{phonrule} package (v1.1.0)}
+\author{Stefano Coretta \\ \texttt{stefano.coretta \textit{at} me.com}}
 
 \reversemarginpar
 
@@ -20,23 +17,23 @@
 \maketitle
 
 \section{Purpose}
-This packages provides macros for typesetting phonological rules like those in Sound Pattern of English \citep{chomsky1968sound}.
+This package provides macros for typesetting phonological rules like those in \textit{Sound Pattern of English} (Chomsky, Noam \& Morris Halle. 1968. \textit{The sound pattern of English}. New York, Evanston, and London: Harper \& Row).
 
 \section{Usage}
+
 \begin{quote}
 \begin{verbatim}
 \phon{〈input〉}{〈output〉}
 \end{verbatim}
 \end{quote}
 
-The command \verb+\phon+ has two arguments: the first one is the input of the rule and the second is the output. Here is an example with code and result:
+The command \verb+\phon+ has two arguments: the first one is the input of the rule and the second is its output. Here is an example with the code and the result it produces:
 
 \begin{exe}
 \ex \verb+\phon{z}{r}+
 \ex \phon{z}{r}
 \end{exe}
 
-\section{Usage}
 \begin{quote}
 \begin{verbatim}
 \phonc{〈input〉}{〈output〉}{〈context〉}
@@ -55,8 +52,8 @@ The commands \verb+\phonl+, \verb+\phonr+ and \verb+\phonb+ add a place holder l
 \begin{exe}
 \ex
 	\begin{xlist}
-	\ex \verb+\phonl{k}{t}{t}+
-	\ex \phonl{z}{r}{}
+	\ex \verb+\phonl{k}{c}{i}+
+	\ex \phonl{k}{tʃ}{i}
 	\end{xlist}
 \ex
 	\begin{xlist}
@@ -70,54 +67,100 @@ The commands \verb+\phonl+, \verb+\phonr+ and \verb+\phonb+ add a place holder l
 	\end{xlist}
 \end{exe}
 
-The \verb+\oneof+ environment provides the possibility to compile several context, one per line, enclosed in curly brackets. You need to use a \verb+\mbox+.
+The \verb+\oneof+ command provides the possibility to compile several contexts, one per line, embraced by a left curly bracket.
 
 \begin{exe}
 \ex
 \begin{verbatim}
 \phonc{t}{ts}{
-\begin{oneof}
-\placehold \mbox{i} \\
-\placehold \mbox{u}
-\end{oneof}
-}
+	\oneof{
+	\phold i \\
+	\phold u}
+	}
 \end{verbatim}
 \ex \phonc{t}{ts}{
-\begin{oneof}
-\placehold \mbox{i} \\
-\placehold \mbox{u}
-\end{oneof}
-}
+	\oneof{
+	\phold i \\
+	\phold u}
+	}
 \end{exe}
 
-\verb+\placehold+ typeset a place holder line with spaces before and after. The \verb+\phonfeat+ environment allows you to insert feature specifications:
+The \verb+\phonfeat+ command allows you to insert feature specifications:
 
 \begin{exe}
 \ex
 \begin{verbatim}
 \phonc{t}{ts}{\phold 
-\begin{phonfeat}
-\mbox{–consonantal} \\
-\mbox{+high} \\
-\mbox{+front}
-\end{phonfeat}
-}
+	\phonfeat{
+		−consonantal \\
+		+high \\
+		+front}
+	}
 \end{verbatim}
 \ex \phonc{t}{ts}{\phold 
-\begin{phonfeat}
-\mbox{– consonantal} \\
-\mbox{+high} \\
-\mbox{+front}
-\end{phonfeat}
-}
+	\phonfeat{
+		−consonantal \\
+		+high \\
+		+front}
+	}
 \end{exe}
 
-\verb+\phold+ typeset a place holder line without spaces. The environments \verb+\oneofnest+ and \verb+\phonfeatnest+ allows one-of environments (inside curly brackets) and feature specifications (inside square brackets) to be nested inside a \verb+\oneof+ environment.
+\verb+\phold+ typesets a place holder line. You can nest \verb|oneof| and \verb|phonfeat| commands for complex rules.
 
+\begin{exe}
+\ex
+\begin{verbatim}
+\phonc{x}{y}{\oneof{
+	\phold z \\
+	\phonfeat{
+		+feature x \\
+		−feature y
+	} \phold
+	}}
+\end{verbatim}
+\ex \phonc{x}{y}{\oneof{
+	\phold z \\
+	\phonfeat{
+		+feature x \\
+		−feature y
+	} \phold
+	}}
+\end{exe}
 
+You can use \verb|\env|, \verb|\envl|, \verb|\envr|, \verb|\envb| for rules with more than one output: these commands typeset only the different outputs with their respective environments.
 
+\begin{exe}
+\ex
+\begin{verbatim}
+\phon{x}{\oneof{
+	\envr{w}{\mbox{z}} \\
+	\envl{v}{\phonfeat{
+		+feature x \\
+		−feature y
+	}}}}
+\end{verbatim}
+\ex \phon{x}{\oneof{
+	\envr{w}{\mbox{z}} \\
+	\envl{v}{\phonfeat{
+		+feature x \\
+		−feature y
+	}}}}
+\end{exe}
 
-\bibliography{linguistics}
-\bibliographystyle{unified}
+\section{Changelog}
+\subsection{v1.1.0}
+\begin{itemize}
+\item Changed: definition of \verb+\phonfeat+ and \verb+\oneof+ with \verb+\pbox+ (requires package \texttt{pbox})
+\item Fixed: documentation typos
+\end{itemize}
+
+\subsection{v1.0.0}
+\begin{itemize}
+\item Added: new commands \verb|\env| for personalised outputs
+\item Changed: definition of commands with \verb|\ensuremath|
+\item Changed: environments to commands
+\item Changed: place holder to 1.5ex length, -1.5pt vertical position
+\item Changed: curly brackets to only left in \verb|\oneof| command
+\end{itemize}
 
 \end{document}
