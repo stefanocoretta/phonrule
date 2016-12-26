@@ -1,27 +1,67 @@
-% PhonRule
-% 
-% (c) 2015 Stefano Coretta
-% LPPL LaTeX Public Project License
-%  
+% phonrule.sty v1.3.0
+%
+% (c) 2016 Stefano Coretta
+%
+% This program can redistributed and/or modified under the terms
+% of the LaTeX Project Public License Distributed from CTAN
+% archives in directory macros/latex/base/lppl.txt; either
+% version 1 of the License, or (at your option) any later version.
 \ProvidesPackage{phonrule}
-  [2015/07/04 v1.2.0 LaTeX package for typesetting phonological rules]
-  
-\RequirePackage{pbox}
-\RequirePackage{ragged2e}
+  [2016/12/26 v1.3.0 LaTeX package for typesetting phonological rules]
+
 
 \let\myDate\date
-\newcommand{\phon} [2] {#1 \ensuremath{\rightarrow} #2}
-\newcommand{\phonc} [3] {#1 \ensuremath{\rightarrow} #2 \ensuremath{/} #3}
-\newcommand{\phonr} [3] {#1 \ensuremath{\rightarrow} #2 \ensuremath{/} \rule[-1.5pt]{1.5ex}{.5pt}#3}
-\newcommand{\phonl} [3] {#1 \ensuremath{\rightarrow} #2 \ensuremath{/} #3\rule[-1.5pt]{1.5ex}{.5pt}}
-\newcommand{\phonb} [4] {#1 \ensuremath{\rightarrow} #2 \ensuremath{/} #3\rule[-1.5pt]{1.5ex}{.5pt}#4}
-\newcommand{\phold}{\rule[-1.5pt]{1.5ex}{.5pt}} % for place holder without spaces
-\newcommand{\env} [2] {#1 \ensuremath{/} #2}
-\newcommand{\envr} [2] {#1 \ensuremath{/} \rule[-1.5pt]{1.5ex}{.5pt}#2}
-\newcommand{\envl} [2] {#1 \ensuremath{/} #2\rule[-1.5pt]{1.5ex}{.5pt}}
-\newcommand{\envb} [3] {#1 \ensuremath{/} #2\rule[-1.5pt]{1.5ex}{.5pt}#3}
-\newcommand{\phonfeat}[1]{\ensuremath{\left[\begin{array}{c} \pbox{\textwidth}{\Centering #1} \end{array}\right]}} % set environment for feature matrix with square brackets
-\newcommand{\oneof}[1]{\ensuremath{\left\{\begin{array}{l} \pbox{\textwidth}{\Centering #1} \end{array}\right.}} % set environment for one of multiple with curly brackets
+
+\newcommand{\phold}{\rule[-1.5pt]{1.5ex}{.5pt}}
+\newcommand{\parrow}{\ensuremath{\rightarrow}}
+
+\newcommand{\phon} [3][\parrow] {#2 #1 #3}
+\newcommand{\phonc} [4][\parrow] {#2 #1 #3~\ensuremath{/}~#4}
+\newcommand{\phonr} [4][\parrow] {#2 #1 #3~\ensuremath{/}~\phold#4}
+\newcommand{\phonl} [4][\parrow] {#2 #1 #3~\ensuremath{/}~#4\phold}
+\newcommand{\phonb} [5][\parrow] {#2 #1 #3~\ensuremath{/}~#4\phold#5}
+
+\makeatletter
+\newcommand*{\env}{%
+    \@ifstar
+        {\@env{&}}
+        {\@env{~}}%
+    }
+\newcommand*{\@env}[3]{#2~/#1#3}
+
+\newcommand*{\envr}{%
+    \@ifstar
+        {\@envr{&}}
+        {\@envr{~}}%
+    }
+\newcommand*{\@envr}[3]{\@env{#1}{#2}{\phold#3}}
+
+\newcommand*{\envl}{%
+    \@ifstar
+        {\@envl{&}}
+        {\@envl{~}}%
+    }
+\newcommand*{\@envl}[3]{\@env{#1}{#2}{#3\phold}}
+
+\newcommand*{\envb}{%
+    \@ifstar
+        {\@envb{&}}
+        {\@envb{~}}%
+    }
+\newcommand*{\@envb}[4]{\@env{#1}{#2}{#3\phold#4}}
+
+\newcommand*{\phonfeat}[1]{%
+  \ensuremath{%
+    \left[\begin{tabular}{c}#1\end{tabular}\right]%
+  }%
+}
+\newcommand*{\oneof}[2][c]{%
+  \ensuremath{%
+    \left\{
+    \begin{tabular}{#1#1}#2\end{tabular}
+    \right.
+  }%
+}
 
 \endinput
 %%
