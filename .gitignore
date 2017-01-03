@@ -1,6 +1,6 @@
 /phonrule/
 *.zip
-*.bash
+
 .texpadtmp
 *.aux
 *.glo
