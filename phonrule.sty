@@ -47,9 +47,9 @@
     }
 \newcommand*{\@envb}[4]{\@env{#1}{#2}{#3\phold#4}}
 
-\newcommand*{\phonfeat}[1]{%
+\newcommand*{\phonfeat}[2][c]{%
   \ensuremath{%
-    \left[\begin{tabular}{c}#1\end{tabular}\right]%
+    \left[\begin{tabular}{#1}#2\end{tabular}\right]%
   }%
 }
 \newcommand*{\oneof}[2][c]{%

@@ -11,7 +11,7 @@
 \usepackage{phonrule}
 \usepackage{gb4e}
 
-\title{The \texttt{phonrule} package (v1.3.1)}
+\title{The \texttt{phonrule} package (v1.3.2)}
 \author{Stefano Coretta \\ \texttt{stefano.coretta \textit{at} postgrad.manchester.ac.uk}}
 
 \reversemarginpar
@@ -89,20 +89,21 @@ The \verb+\oneof+ command provides the possibility to compile several contexts, 
     }
 \end{exe}
 
-The \verb+\phonfeat+ command allows you to insert feature specifications:
+The \verb+\phonfeat+ command allows you to insert feature specifications.
+The possible values are \texttt{[c]} for centre (the default), \texttt{[l]} for left-aligned, and \texttt{[r]} for right-aligned. 
 
 \begin{exe}
 \ex
 \begin{lstlisting}
 \phonc{t}{ts}{\phold
-    \phonfeat{
+    \phonfeat[l]{
         −consonantal \\
         +high \\
         +front}
     }
 \end{lstlisting}
 \ex \phonc{t}{ts}{\phold
-    \phonfeat{
+    \phonfeat[l]{
         −consonantal \\
         +high \\
         +front}
@@ -133,7 +134,7 @@ The \verb|oneof| command accepts an optional argument which tells the alignment 
 \end{exe}
 
 You can use \verb|\env|, \verb|\envl|, \verb|\envr|, \verb|\envb| for rules with more than one output: these commands typeset only the different outputs with their respective environments.
-The possible values are \texttt{[c]} for centre (the default), \texttt{[l]} for left-aligned, and \texttt{[r]} for right aligned.
+The possible values are \texttt{[c]} for centre (the default), \texttt{[l]} for left-aligned, and \texttt{[r]} for right-aligned.
 The following example shows the use of the optional argument with \texttt{[l]}.
 The \verb|\env|, \verb|\envl|, \verb|\envr|, \verb|\envb| have a starred version to be used when an optional argument is set in \verb|\oneof|.
 
@@ -156,6 +157,12 @@ The \verb|\env|, \verb|\envl|, \verb|\envr|, \verb|\envb| have a starred version
 \end{exe}
 
 \section{Change log}
+
+\subsection*{v1.3.2 - 2017-04-16}
+\subsubsection*{Added}
+\begin{itemize}
+    \item optional argument for text alignment in \verb+\phonfeat+ command
+\end{itemize}
 
 \subsection*{v1.3.1 - 2017-01-02}
 \subsubsection*{Added}
