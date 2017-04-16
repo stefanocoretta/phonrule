@@ -89,20 +89,21 @@ The \verb+\oneof+ command provides the possibility to compile several contexts, 
     }
 \end{exe}
 
-The \verb+\phonfeat+ command allows you to insert feature specifications:
+The \verb+\phonfeat+ command allows you to insert feature specifications.
+The possible values are \texttt{[c]} for centre (the default), \texttt{[l]} for left-aligned, and \texttt{[r]} for right-aligned. 
 
 \begin{exe}
 \ex
 \begin{lstlisting}
 \phonc{t}{ts}{\phold
-    \phonfeat{
+    \phonfeat[l]{
         −consonantal \\
         +high \\
         +front}
     }
 \end{lstlisting}
 \ex \phonc{t}{ts}{\phold
-    \phonfeat{
+    \phonfeat[l]{
         −consonantal \\
         +high \\
         +front}
