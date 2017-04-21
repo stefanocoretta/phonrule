@@ -1,6 +1,6 @@
-# phonrule.sty (v1.3.1)
+# phonrule.sty (v1.3.2)
 
-(c) 2013-2016 Stefano Coretta
+(c) 2013-2017 Stefano Coretta
 
 This packages provides macros for typesetting phonological rules like those in Sound Pattern of English (Chomsky and Halle 1968). It is recommended for classical linear phonology.
 
