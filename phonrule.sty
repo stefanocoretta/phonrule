@@ -12,19 +12,20 @@
 
 \newcommand{\phold}{~\rule[-1.5pt]{3.0ex}{.5pt}~}
 \newcommand{\parrow}{~\ensuremath{\rightarrow}~}
+\newcommand{\phonslash}{~\begin{large}{\ensuremath{/}}\end{large}~}
 
 \newcommand{\phon} [3][\parrow] {#2 #1 #3}
-\newcommand{\phonc} [4][\parrow] {#2 #1 #3~\ensuremath{/}~#4}
-\newcommand{\phonr} [4][\parrow] {#2 #1 #3~\ensuremath{/}~\phold#4}
-\newcommand{\phonl} [4][\parrow] {#2 #1 #3~\ensuremath{/}~#4\phold}
-\newcommand{\phonb} [5][\parrow] {#2 #1 #3~\ensuremath{/}~#4\phold#5}
+\newcommand{\phonc} [4][\parrow] {#2 #1 #3~\phonslash~#4}
+\newcommand{\phonr} [4][\parrow] {#2 #1 #3~\phonslash~\phold#4}
+\newcommand{\phonl} [4][\parrow] {#2 #1 #3~\phonslash~#4\phold}
+\newcommand{\phonb} [5][\parrow] {#2 #1 #3~\phonslash~#4\phold#5}
 
 \newcommand*{\env}{%
     \@ifstar
         {\@env{&}}
         {\@env{~}}%
     }
-\newcommand*{\@env}[3]{#2~/#1#3}
+\newcommand*{\@env}[3]{#2~\phonslash#1#3}
 
 \newcommand*{\envr}{%
     \@ifstar
