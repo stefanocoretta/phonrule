@@ -1,4 +1,4 @@
-# phonrule.sty (v1.3.2)
+# phonrule.sty (v1.4.0)
 
 (c) 2013-2017 Stefano Coretta
 
