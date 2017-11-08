@@ -10,3 +10,7 @@ This program can redistributed and/or modified under the terms of the LaTeX
 Project Public License Distributed from CTAN archives in directory
 macros/latex/base/lppl.txt; either version 1 of the License, or (at your option)
 any later version.
+
+## Acknowledgements
+
+Thanks to Dr Scott Sadowsky (<http://sadowsky.cl/>) for implementing the changes in v1.4.0.
